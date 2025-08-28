@@ -1,0 +1,195 @@
+CONFIGURACION
+
+//////////
+SWITCH OFICINA 1
+
+en
+conf t
+hostname Oficina1
+
+username admin privilege 15 secret 1234
+line console 0
+password 5678
+login local
+transport output none
+exec-timeout 10
+end
+
+conf t
+line console 0
+password 5678
+login local
+transport output none
+exec-timeout 10
+end
+
+conf t
+line vty 0 15
+login local
+end
+
+/////////////
+SWITCH OFICINA 2
+
+enable
+config t
+hostname Oficina2
+
+username admin privilege 15 secret 1234
+line console 0
+password 5678
+login local
+transport output none
+exec-timeout 10
+end
+
+conf t
+line console 0
+password 5678
+login local
+transport output none
+exec-timeout 10
+end
+
+conf t
+line vty 0 15
+login local
+transport output all
+do wr
+end
+
+////////
+ROUTER OFICINA
+
+enable
+config t
+hostname RouterOficina
+
+username admin privilege 15 secret 1234
+line console 0
+password 5678
+login local
+transport output none
+exec-timeout 10
+end
+
+conf t
+line console 0
+password 5678
+login local
+transport output none
+exec-timeout 10
+end
+
+conf t
+line vty 0 15
+login local
+transport output all
+end
+
+conf t
+int fa0/0
+no sh
+ex
+
+int fa0/1
+no sh
+do wr
+end
+
+
+/////////
+SWITCH GERENCIA 2
+
+conf t
+hostname Gerencia2
+
+username admin privilege 15 secret 1234
+line console 0
+password 5678
+login local
+transport output none
+exec-timeout 10
+end
+
+conf t
+line console 0
+password 5678
+login local
+transport output none
+exec-timeout 10
+end
+
+conf t
+line vty 0 15
+login local
+transport output all
+end
+
+
+
+//////////
+SWITCH GERENCIA 1
+
+conf t
+hostname Gerencia1
+
+username admin privilege 15 secret 1234
+line console 0
+password 5678
+login local
+transport output none
+exec-timeout 10
+end
+
+conf t
+line console 0
+password 5678
+login local
+transport output none
+exec-timeout 10
+end
+
+conf t
+line vty 0 15
+login local
+transport output all
+end
+
+////////
+ROUTER GERENCIA
+
+enable
+config t
+hostname RouterGerencia
+
+username admin privilege 15 secret 1234
+line console 0
+password 5678
+login local
+transport output none
+exec-timeout 10
+end
+
+conf t
+line console 0
+password 5678
+login local
+transport output none
+exec-timeout 10
+end
+
+conf t
+line vty 0 15
+login local
+end
+
+conf t
+int fa0/0
+no sh
+ex
+
+int fa0/1
+no sh
+do wr
+end
